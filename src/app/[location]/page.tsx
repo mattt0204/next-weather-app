@@ -3,10 +3,12 @@ import { getForcastWeather } from '@/utils/getFutureWeather'
 import React from 'react'
 
 type Props = {
-  location: string
+  params: {
+    location: string
+  }
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: Props) {
   const title = `${params.location}의 3일 날씨`
   return {
     title,
