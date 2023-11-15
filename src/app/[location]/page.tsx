@@ -6,6 +6,13 @@ type Props = {
   location: string
 }
 
+export async function generateMetadata({ params }) {
+  const title = `${params.location}의 3일 날씨`
+  return {
+    title,
+  }
+}
+
 export default async function DetailPage({ params }: Props) {
   // 3일 데이터
   // 3일 데이터에 forecast.forecastday
