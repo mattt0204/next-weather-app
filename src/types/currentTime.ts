@@ -1,4 +1,4 @@
-export interface Root {
+export interface currentTime {
   year: number
   month: number
   day: number

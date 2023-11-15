@@ -1,4 +1,4 @@
-export interface Root {
+export interface ForecastWeather {
   location: Location
   current: Current
   forecast: Forecast
