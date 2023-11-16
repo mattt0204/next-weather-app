@@ -1,3 +1,4 @@
+import ForcastWeatherItem from '@/components/ForcastWeatherItem'
 import HomeButton from '@/components/HomeButton'
 import { getForcastWeather } from '@/utils/getFutureWeather'
 import React from 'react'
@@ -27,12 +28,15 @@ export default async function DetailPage({ params }: Props) {
   return (
     <>
       <h1>상세 페이지에서는 {location}의 3일 날씨를 나타냅니다.</h1>
+
       <ul>
         {forcastWeatherDays.forecast.forecastday.map((day) => {
           return (
-            <li>
-              {location}의 날씨는 {day.date} 섭씨 {day.day.avgtemp_c}도입니다.
-            </li>
+            <ForcastWeatherItem
+              location={location}
+              date={day.date}
+              avgTemp={day.day.avgtemp_c}
+            ></ForcastWeatherItem>
           )
         })}
       </ul>
