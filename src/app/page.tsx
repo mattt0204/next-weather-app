@@ -1,34 +1,32 @@
+import CurrentTimeItem from '@/components/CurrentTimeItem'
 import RevalidationButton from '@/components/RevalidationButton'
-import { City } from '@/types/City'
+import { City } from '@/types/city'
 import { getCurrentWeather } from '@/utils/getCurrentWeather'
 import { getTime } from '@/utils/getTime'
 import Link from 'next/link'
 import React from 'react'
-
-export default async function Home() {
+import CurrentWeatherItem from '@/components/CurrentWeatherItem'
+export default function Home() {
   // 지역별 날씨 데이터
   // current.condition.text 홍콩과 서울
   const cities: City[] = [
     { name: '서울', code: 'seoul' },
     { name: '홍콩', code: 'hongkong' },
   ]
-  const currentSeoul = await getCurrentWeather('seoul')
-  const currentHongkong = await getCurrentWeather('hongkong')
-  const currentTime = await getTime('Asia/Seoul')
 
   return (
     <div>
       <h1>날씨앱 만들기 🌈</h1>
-      <p>현재 시각은 {currentTime.dateTime}</p>
+      <CurrentTimeItem />
       <RevalidationButton />
       <ul>
         {cities.map((city) => {
           return (
-            <li key={city.code}>
-              <Link href={`/${city.code}`}>
-                {city.name}의 날씨는 {currentSeoul.current.condition.text}
-              </Link>
-            </li>
+            <CurrentWeatherItem
+              key={city.code}
+              cityCode={city.code}
+              cityName={city.name}
+            />
           )
         })}
       </ul>

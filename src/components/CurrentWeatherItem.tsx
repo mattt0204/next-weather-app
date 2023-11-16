@@ -1,13 +1,20 @@
+import { getCurrentWeather } from '@/utils/getCurrentWeather'
+import Link from 'next/link'
+
 type Props = {
-  name: string
-  code: 
+  cityName: string
+  cityCode: string
 }
-function CurrentWeatherItem(props: Props) {
+export default async function CurrentWeatherItem({
+  cityName,
+  cityCode,
+}: Props) {
+  const currentWeaher = await getCurrentWeather(cityCode)
+
   return (
-    // 여기 Item 빼기
     <li>
-      <Link href={`/${props.city.code}`}>
-        {props.city.name}의 날씨는 {props.text}
+      <Link href={`/${cityCode}`}>
+        {cityName}의 날씨는 {currentWeaher.current.condition.text}
       </Link>
     </li>
   )
