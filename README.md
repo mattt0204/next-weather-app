@@ -49,3 +49,8 @@ json to type
 ```
 https://transform.tools/json-to-typescript
 ```
+
+환경변수(.env.local)
+```
+NEXT_PUBLIC_API_KEY
+```
