@@ -1,4 +1,5 @@
 import RevalidationButton from '@/components/RevalidationButton'
+import { City } from '@/types/City'
 import { getCurrentWeather } from '@/utils/getCurrentWeather'
 import { getTime } from '@/utils/getTime'
 import Link from 'next/link'
@@ -7,7 +8,7 @@ import React from 'react'
 export default async function Home() {
   // 지역별 날씨 데이터
   // current.condition.text 홍콩과 서울
-  const cities = [
+  const cities: City[] = [
     { name: '서울', code: 'seoul' },
     { name: '홍콩', code: 'hongkong' },
   ]
